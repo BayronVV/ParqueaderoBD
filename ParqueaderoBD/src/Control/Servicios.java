@@ -26,5 +26,17 @@ public class Servicios {
         }
     
     }
+    public void EliminarD(Vehiculo d){
+    
+        try{
+        
+            VehiculoServicios ds = new VehiculoServicios();
+            ds.eliminarTodo(Conexion.obtener(), d);
+        }
+        catch(Exception e){
+        
+        }
+    
+    }
     
 }

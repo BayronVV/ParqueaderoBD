@@ -32,5 +32,23 @@ public class VehiculoServicios {
         
         }
     }
+    public void eliminarTodo(Connection conexion, Vehiculo d)throws SQLException{
+    
+        try{
+            
+           PreparedStatement consulta;
+           consulta = conexion.prepareStatement("DELETE FROM registro");
+          
+       
+           consulta.executeUpdate();
+            
+        }
+        catch (SQLException ex){
+            
+            throw new SQLException(ex);
+        
+        }
+    
+    }
     
 }

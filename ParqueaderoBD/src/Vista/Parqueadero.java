@@ -183,6 +183,11 @@ public class Parqueadero extends javax.swing.JFrame {
         jLabel8.setText("Carros");
 
         txtReiniciar.setText("Reiniciar");
+        txtReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReiniciarActionPerformed(evt);
+            }
+        });
 
         txtTotalizar.setText("Totalizar");
 
@@ -293,8 +298,31 @@ public class Parqueadero extends javax.swing.JFrame {
      Integer modelo = Integer.parseInt(txtModelo.getText());
      Date fecha = Date.valueOf(txtFecha.getText());
      String tipo = txtTipo.getItemAt(txtTipo.getSelectedIndex());
-     Integer valor = 2000;
+     Integer valor = 0;
+     if(modelo < 2012 && tipo.equals("Carro")){
+         valor = 2000;
+     }
+     if(modelo < 2012 && tipo.equals("Moto")){
+         valor = 1000;
+     }
+     if(modelo >= 2012 && tipo.equals("Carro")){
+         valor = 2500;
+     }
+     if(modelo >= 2012 && tipo.equals("Moto")){
+         valor = 1200;
+     }
+     boolean verificarM = true;
+     boolean verificarC = true;
+     if((placa.length()<6 || placa.length()>6) && tipo.equals("Carro")){
+          Alerta("Placa de Carro invalida!", "Error");
+          verificarC = false;
+     }
+     if((placa.length()<5 || placa.length()>5) && tipo.equals("Moto")){
+          Alerta("Placa de Moto invalida!", "Error");
+          verificarM = false;
+     }
      
+     if(verificarC == true && verificarM == true ){
      Vehiculo v = new Vehiculo(placa,fecha,modelo,tipo,valor);
      Servicios s = new Servicios();
      
@@ -303,7 +331,10 @@ public class Parqueadero extends javax.swing.JFrame {
         
      Limpiar();
      
-     
+     }
+     else if(verificarC == false && verificarM == false){
+      Alerta("Error introduciendo datos!", "Error!!!");
+     }
      
         
     }//GEN-LAST:event_txtAgregarActionPerformed
@@ -321,6 +352,18 @@ public class Parqueadero extends javax.swing.JFrame {
         
         Limpiar();
     }//GEN-LAST:event_txtLimpiarActionPerformed
+
+    private void txtReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReiniciarActionPerformed
+        // TODO add your handling code here:
+        
+        Vehiculo v = new Vehiculo();
+        Servicios s = new Servicios();
+        
+        s.EliminarD(v);
+        
+        Alerta("Todos los Registros del dia han sido eliminados!", "!!!");
+        
+    }//GEN-LAST:event_txtReiniciarActionPerformed
 
     /**
      * @param args the command line arguments

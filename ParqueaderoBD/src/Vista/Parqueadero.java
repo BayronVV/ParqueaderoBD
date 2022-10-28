@@ -8,7 +8,7 @@ package Vista;
 import Modelo.*;
 import Control.Servicios;
 import java.sql.Date;
-package Vista;
+
 
 /**
  *
@@ -62,6 +62,7 @@ public class Parqueadero extends javax.swing.JFrame {
         txtAgregar = new javax.swing.JButton();
         txtLimpiar = new javax.swing.JButton();
         txtTipo = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -111,6 +112,8 @@ public class Parqueadero extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("YYYY-MM-DD");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,11 +133,13 @@ public class Parqueadero extends javax.swing.JFrame {
                             .addComponent(txtModelo)
                             .addComponent(txtFecha)
                             .addComponent(txtTipo, 0, 190, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(txtAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtLimpiar)
                         .addGap(50, 50, 50))))
         );
@@ -152,7 +157,8 @@ public class Parqueadero extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -205,7 +211,7 @@ public class Parqueadero extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCarros)))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +248,7 @@ public class Parqueadero extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -286,10 +292,16 @@ public class Parqueadero extends javax.swing.JFrame {
      String placa = txtPlaca.getText();
      Integer modelo = Integer.parseInt(txtModelo.getText());
      Date fecha = Date.valueOf(txtFecha.getText());
-     String tipo = String.valueOf(txtTipo.getToolTipText());
+     String tipo = txtTipo.getItemAt(txtTipo.getSelectedIndex());
      Integer valor = 2000;
      
-   //  Vehiculo v = new Vehiculo(placa,modelo,fecha,tipo,valor);
+     Vehiculo v = new Vehiculo(placa,fecha,modelo,tipo,valor);
+     Servicios s = new Servicios();
+     
+     s.RegistrarV(v);
+     Alerta("Datos guardados!", "Registro");
+        
+     Limpiar();
      
      
      
@@ -324,6 +336,7 @@ public class Parqueadero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

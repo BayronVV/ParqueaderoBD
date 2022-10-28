@@ -21,7 +21,7 @@ public class VehiculoServicios {
            consulta.setString(1, d.getPlaca());
            consulta.setDate(2, d.getFecha());
            consulta.setInt(3, d.getModelo());
-           consulta.setInt(4, d.getTipo());
+           consulta.setString(4, d.getTipo());
            consulta.setInt(5, d.getValor());
            consulta.executeUpdate();
             

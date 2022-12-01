@@ -39,4 +39,33 @@ public class Servicios {
     
     }
     
+    public Integer Sumatoria(Vehiculo d){
+      VehiculoServicios ds = new VehiculoServicios();
+        try{
+        
+           
+            ds.sumar(Conexion.obtener(), d);
+           
+            
+        }
+        catch(Exception e){
+        
+        }
+       return ds.m;
+    }
+    public Integer Sumatoria2(Vehiculo d){
+      VehiculoServicios ds = new VehiculoServicios();
+        try{
+        
+           
+            ds.sumar(Conexion.obtener(), d);
+           
+            
+        }
+        catch(Exception e){
+        
+        }
+       return ds.n;
+    }
+    
 }

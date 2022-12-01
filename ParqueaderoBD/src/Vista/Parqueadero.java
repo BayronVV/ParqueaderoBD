@@ -190,6 +190,11 @@ public class Parqueadero extends javax.swing.JFrame {
         });
 
         txtTotalizar.setText("Totalizar");
+        txtTotalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -365,6 +370,21 @@ public class Parqueadero extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtReiniciarActionPerformed
 
+    private void txtTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalizarActionPerformed
+        // TODO add your handling code here:
+        
+        Vehiculo v = new Vehiculo();
+    
+        Servicios s = new Servicios();
+        
+        String t = String.valueOf(s.Sumatoria(v));
+        String tt = String.valueOf(s.Sumatoria2(v));
+        txtCarros.setText(t);
+        txtMotos.setText(tt);
+        
+        
+    }//GEN-LAST:event_txtTotalizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -385,11 +405,11 @@ public class Parqueadero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton txtAgregar;
-    private javax.swing.JTextField txtCarros;
+    public javax.swing.JTextField txtCarros;
     private javax.swing.JTextField txtFecha;
     public javax.swing.JButton txtLimpiar;
     private javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtMotos;
+    public javax.swing.JTextField txtMotos;
     private javax.swing.JTextField txtPlaca;
     public javax.swing.JButton txtReiniciar;
     private javax.swing.JTextArea txtTexto;

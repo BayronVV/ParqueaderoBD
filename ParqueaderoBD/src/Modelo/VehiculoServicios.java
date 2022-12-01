@@ -10,7 +10,10 @@ package Modelo;
  * @author auxiliar
  */
 import java.sql.*;
+import Vista.Parqueadero;
 public class VehiculoServicios {
+    
+   public Integer m,n;
     
     public void guardar(Connection conexion, Vehiculo d) throws SQLException{
     
@@ -50,5 +53,37 @@ public class VehiculoServicios {
         }
     
     }
+    
+     public void sumar(Connection conexion, Vehiculo d)throws SQLException{
+       Parqueadero v = new Parqueadero();
+         
+        try{
+            
+           Statement sta = conexion.createStatement();
+           String consulta = "select sum(valor) as total, count(placa) as cantidad, tipo from registro group by tipo";
+           ResultSet rs = sta.executeQuery(consulta);
+         //  while(rs.next()){
+           rs.next();
+            m = rs.getInt("cantidad");
+             System.out.println("Total valor = "+m);
+             rs.next();
+             n = rs.getInt("cantidad");
+             System.out.println("Total valor = "+n);
+             
+       
+          // }
+         
+           rs.close();
+           sta.close();
+            
+        }
+        catch (SQLException ex){
+            
+            throw new SQLException(ex);
+        
+        }
+    
+    }
+    
     
 }

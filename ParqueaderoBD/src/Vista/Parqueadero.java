@@ -377,11 +377,17 @@ public class Parqueadero extends javax.swing.JFrame {
     
         Servicios s = new Servicios();
         
-        String t = String.valueOf(s.Sumatoria(v));
-        String tt = String.valueOf(s.Sumatoria2(v));
+   
+   //     String tt = String.valueOf(s.Sumatoria2(v));
+   //     txtCarros.setText(t);
+   //     txtMotos.setText(tt);
+        
+        s.Sumatoria(v);
+        String a = String.valueOf(s.Sumatoria(v));
+        String t = a.substring(0, 1);
+        String tt =a.substring(1, 2);
         txtCarros.setText(t);
         txtMotos.setText(tt);
-        
         
     }//GEN-LAST:event_txtTotalizarActionPerformed
 

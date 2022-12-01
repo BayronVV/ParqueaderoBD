@@ -39,7 +39,7 @@ public class Servicios {
     
     }
     
-    public Integer Sumatoria(Vehiculo d){
+    public String Sumatoria(Vehiculo d){
       VehiculoServicios ds = new VehiculoServicios();
         try{
         
@@ -51,21 +51,21 @@ public class Servicios {
         catch(Exception e){
         
         }
-       return ds.m;
+       return ds.o;
     }
-    public Integer Sumatoria2(Vehiculo d){
-      VehiculoServicios ds = new VehiculoServicios();
-        try{
+  //  public Integer Sumatoria2(Vehiculo d){
+    //  VehiculoServicios ds = new VehiculoServicios();
+    //    try{
         
            
-            ds.sumar(Conexion.obtener(), d);
+     //       ds.sumar(Conexion.obtener(), d);
            
             
-        }
-        catch(Exception e){
+    //    }
+    //    catch(Exception e){
         
-        }
-       return ds.n;
-    }
+    //    }
+    //   return ds.n;
+   // }
     
 }

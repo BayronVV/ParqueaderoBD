@@ -14,7 +14,7 @@ import Vista.Parqueadero;
 public class VehiculoServicios {
     
    public Integer m,n;
-    
+   public String m1,n1,o; 
     public void guardar(Connection conexion, Vehiculo d) throws SQLException{
     
         try{
@@ -65,14 +65,18 @@ public class VehiculoServicios {
          //  while(rs.next()){
            rs.next();
             m = rs.getInt("cantidad");
-             System.out.println("Total valor = "+m);
+            
+       
+           //  v.txtCarros.setText(String.valueOf(m));
+          m1 = String.valueOf(m);
              rs.next();
              n = rs.getInt("cantidad");
-             System.out.println("Total valor = "+n);
-             
-       
-          // }
-         
+        //     System.out.println("Total valor = "+n);
+         //    v.txtMotos.setText(String.valueOf(n));
+            n1 = String.valueOf(n);
+          o=m1+n1;  
+        //   }
+            System.out.println("Total valor = "+o);
            rs.close();
            sta.close();
             
